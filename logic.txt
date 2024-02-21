@@ -1,0 +1,44 @@
+Logic of planets
+-------mercury-------planets w/o rings------------------------
+const mercuryGeo = new THREE.SphereGeometry(3.2, 32, 30);
+const mercuryMat = new THREE.MeshStandardMaterial({
+    map: textureLoader.load(mercurymap),
+    bumpMap: textureLoader.load(mercurybump),
+});
+const mercury = new THREE.Mesh(mercuryGeo, mercuryMat);
+
+// making a 3Dobject as a parent object for every planet
+const mercuryObj = new THREE.Object3D();
+mercuryObj.add(mercury);
+scene.add(mercuryObj);
+mercuryObj.position.y = 16;
+mercury.position.x = 28;
+
+
+
+
+---------planets with rings---------------saturn----------------
+const saturnGeo = new THREE.SphereGeometry(5, 32, 30);
+const saturnMat = new THREE.MeshStandardMaterial({
+    map: textureLoader.load(saturnmap),
+});
+const saturn = new THREE.Mesh(saturnGeo, saturnMat);
+// making a 3Dobject as a parent object for every planet
+const saturnObj = new THREE.Object3D();
+saturnObj.add(saturn);
+scene.add(saturnObj);
+saturnObj.position.y = 16;
+saturn.position.x = 88;
+
+// saturn Ring
+const saturnRingGeo = new THREE.RingGeometry(12, 20, 32);
+const saturnRingMat = new THREE.MeshStandardMaterial({
+    map: textureLoader.load(saturnring),
+    side:THREE.DoubleSide,
+});
+const saturnRing = new THREE.Mesh(saturnRingGeo, saturnRingMat);
+// making a 3Dobject as a parent object for every planet
+saturnObj.add(saturnRing);
+saturnRing.rotation.x = Math.PI / 2;
+saturnRing.position.x = 88;
+
